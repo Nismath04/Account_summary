@@ -11,5 +11,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 User-account summary : Loads the home page of the application
 <br>
 Dialog               : Opens the dialog box for Edit and Add
+<br>
 delete-dialog        : Opens the delete confirmation dialog box
 
