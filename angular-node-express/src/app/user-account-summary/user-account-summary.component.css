@@ -1,0 +1,13 @@
+table {
+    width: 100%;
+  }
+  .action-button-row button
+  {
+    margin-right: 8px;
+  }
+  .button-add{
+  position: absolute;
+right: 45px;
+top: 18px;
+min-width: 122px;
+  }
