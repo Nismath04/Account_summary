@@ -45,7 +45,8 @@ import { TransactionReducer } from './store/reducers/transactions.reducer';
     MaterialExampleModule,
     StoreModule.forRoot({
       transactions: TransactionReducer,
-    }) 
+    }),
+    StoreModule.forRoot({}, {}) 
   ],
   providers: [],
   bootstrap: [AppComponent]
