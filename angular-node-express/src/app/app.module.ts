@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MaterialExampleModule } from 'src/material.module';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { StoreModule } from '@ngrx/store';
+import { TransactionReducer } from './store/reducers/transactions.reducer';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,10 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
     MatFormFieldModule,
     MatIconModule,
     ReactiveFormsModule,
-    MaterialExampleModule 
+    MaterialExampleModule,
+    StoreModule.forRoot({
+      transactions: TransactionReducer,
+    }) 
   ],
   providers: [],
   bootstrap: [AppComponent]

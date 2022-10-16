@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ValidatorService } from 'angular-iban';
 
@@ -22,7 +22,8 @@ export class DialogComponent implements OnInit {
 
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private formBuilder:FormBuilder) {
+   
     if (data) {
       console.log(data)
       this.accountHolder = data.account.accountHolder
@@ -46,7 +47,7 @@ export class DialogComponent implements OnInit {
     else {
       this.iban   = new FormControl('', [Validators.required, ValidatorService.validateIban],);
       this.date   = new FormControl('', [Validators.required],);
-      this.amount = new FormControl('', [Validators.required,Validators.min(2),Validators.max(8)]);
+      this.amount = new FormControl('', [Validators.required]);
       this.note   = new FormControl('');
 
     }
@@ -67,5 +68,17 @@ export class DialogComponent implements OnInit {
       return 'You must enter a value';
     }
     return this.amount.hasError('amount') ? '' : 'enter max 8 characters, min 2 characters';
+  }
+  
+  myForm = this.formBuilder.group({
+    accountHolder:['',[Validators.required]],
+    iban:['', [Validators.required, ValidatorService.validateIban]],
+    date:['',[Validators.required]],
+    amount:['',[Validators.required]],
+    note:['']
+  });
+ 
+  saveForm(){
+    console.log('Form data is ', this.myForm.value);
   }
 }
